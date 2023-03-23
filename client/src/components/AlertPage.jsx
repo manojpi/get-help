@@ -1,11 +1,19 @@
 import "../style.css";
-import geoLocationApi from "../services/geoLocationApi";
+import alert from "../assets/alert.png";
+import { useContext } from "react";
+import locationContext from "../contexts/locationContext";
 
-export default function AlertPage() {
+
+function AlertPage() {
+
+    const location = useContext(locationContext);
     
     return (
-        <>
-            <button type="button" class="btn btn-outline-danger" onClick={geoLocationApi}>Danger</button>  
-        </>
+        <div className="container">
+            <img src={alert} width={300} height={300}/>
+            <br/>
+        </div>
     );
 }
+
+export default AlertPage;

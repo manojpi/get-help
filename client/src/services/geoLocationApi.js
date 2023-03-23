@@ -14,7 +14,6 @@ const geoLocationApi = async () => {
                 }
             });
         });
-        alert(location.address.country);
         return location.address;
 
     } catch (err) {
