@@ -13,8 +13,8 @@ app.use(bodyParser.json());
 
 
 app.post('/alert', async (req, res) => {
-    console.log(req.body);
-    let returnMessage = await main().catch(console.error);
+    locationData = req.body;
+    let returnMessage = await main(locationData).catch(console.error);
     
     res.json(
         {

@@ -1,6 +1,21 @@
+
+
 const nodemailer = require("nodemailer");
 
-async function main() {
+
+async function main(locationData) {
+    const {latitude, longitude, state, postalCode, city} = locationData;
+
+
+    let ALERT_MSG = `To Whom It May Concern,
+
+    I am in an emergency situation at ${city}, ${state} ${postalCode} at (Latitude, Longitude) : (${latitude}, ${longitude}) and require immediate assistance from the police department. 
+
+    Please send help urgently as I fear for my safety.
+
+    Sincerely, 
+    Email Test 0`
+
     let testAcc = await nodemailer.createTestAccount();
 
     let transporter = nodemailer.createTransport({
@@ -16,15 +31,14 @@ async function main() {
     let info = await transporter.sendMail({
             to: "emailtestnodejs0@gmail.com",
             from: "navneetkaini@gmail.com",
-            subject: "Test",
-            text: "Just a Test"
+            subject: "SOS - EMERGENCY",
+            text: ALERT_MSG
         });
 
     let returnMessage = {to: info.envelope.to[0],
                         from: info.envelope.from,
-                        emailUrl: nodemailer.getTestMessageUrl(info)}
+                        mailUrl: nodemailer.getTestMessageUrl(info)}
     
-    console.log(returnMessage);
     return returnMessage;
 }
 
