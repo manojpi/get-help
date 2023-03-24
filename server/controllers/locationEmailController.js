@@ -1,12 +1,10 @@
-
-
 const nodemailer = require("nodemailer");
 
 
 async function main(locationData) {
     const {latitude, longitude, state, postalCode, city} = locationData;
 
-
+    // console.log(locationData);
     let ALERT_MSG = `To Whom It May Concern,
 
     I am in an emergency situation at ${city}, ${state} ${postalCode} at (Latitude, Longitude) : (${latitude}, ${longitude}) and require immediate assistance from the police department. 
