@@ -15,16 +15,19 @@ export default function App() {
     const [location, setLocation] = useState({});
     
     const onAlertHandler = async () => {
-        console.log("Clicked")
         
         let currLocation = await geoLocationApi();
         setLocation(currLocation);
 
-        const response = await fetch('http://localhost:8000/alert', {
+        const response = await fetch('http://localhost:9001/alert', {
             body:JSON.stringify(location),
             method:"POST",
-        });
-        console.log(response);
+            headers:{
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              }
+        }).then(res => res.json());
+        console.log(response.body);
     }
 
     return (

@@ -14,13 +14,17 @@ async function main() {
         });
     
     let info = await transporter.sendMail({
-            from: "emailtestnodejs0@gmail.com",
-            to: "navneetkaini@gmail.com",
+            to: "emailtestnodejs0@gmail.com",
+            from: "navneetkaini@gmail.com",
             subject: "Test",
             text: "Just a Test"
         });
 
-    let returnMessage = `Message sent: ${info.messageId} \nPreview URL: ${nodemailer.getTestMessageUrl(info)}`;
+    let returnMessage = {to: info.envelope.to[0],
+                        from: info.envelope.from,
+                        emailUrl: nodemailer.getTestMessageUrl(info)}
+    
+    console.log(returnMessage);
     return returnMessage;
 }
 
