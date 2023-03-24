@@ -21,7 +21,6 @@ async function main() {
         });
 
     let returnMessage = `Message sent: ${info.messageId} \nPreview URL: ${nodemailer.getTestMessageUrl(info)}`;
-    console.log(returnMessage)
     return returnMessage;
 }
 
