@@ -16,7 +16,7 @@ export default function App() {
     
     const onAlertHandler = async () => {
         console.log("Clicked")
-        
+        toast.info("Alerting the Police");
         let currLocation = await geoLocationApi();
         setLocation(currLocation);
 
@@ -24,6 +24,7 @@ export default function App() {
             body:JSON.stringify(location),
             method:"POST",
         });
+        toast.success("Alerted the police")
         console.log(response);
     }
 
@@ -41,6 +42,7 @@ export default function App() {
                     alert the nearest police<br></br> station to your current location</p>
             </div>
             </div>
+        <ToastContainer  autoClose={1000} theme="colored" newestOnTop={true} toastStyle={{ backgroundColor: "crimson" }} />
         </div>
     );
 }
