@@ -3,16 +3,11 @@ import "../style.css"
 
 
 export default function ExtraDetail () {
-    // const detailsInitial = {
-    //     name: "",
-    //     description: ""
-    // }
-    // const [details, setDetails] = useState({detailsInitial});
+
     const sendHandler = async (event) => {
         let response = await fetch('http://localhost:9001/details', {
-            body:JSON.stringify(location),
-            method:"POST",
 
+            method:"POST",
             body:JSON.stringify({
                 name: event.target.name.value,
                 description: event.target.description.value
